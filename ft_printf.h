@@ -6,7 +6,7 @@
 /*   By: bizcru <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 23:37:11 by bizcru            #+#    #+#             */
-/*   Updated: 2024/10/10 20:30:14 by bizcru           ###   ########.fr       */
+/*   Updated: 2024/10/11 19:59:40 by bcanals-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 # define LIBFTPRINTF_H
 
 # include "libft/libft.h"
+# include <stdarg.h>
+# include <unistd.h>
 # include <stddef.h>
 
-void	ft_check();
+int	ft_printf(const char *, ...);
 
 #endif
