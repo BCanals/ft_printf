@@ -6,7 +6,7 @@
 #    By: bizcru <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/28 15:47:58 by bizcru            #+#    #+#              #
-#    Updated: 2024/10/12 23:59:53 by bizcru           ###   ########.fr        #
+#    Updated: 2024/10/13 04:57:46 by bizcru           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,11 +20,7 @@ CFLAGS = -Wall -Wextra -Werror
 
 SRCS =  ft_printf.c ft_printf_utils.c
 
-BONUS_SRCS = ft_lstnew_bonus.c \
-
 OBJS = $(SRCS:.c=.o)
-
-BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 
 %.o: %.c
 	gcc $(CFLAGS) -I. -c $< -o $@
@@ -37,17 +33,11 @@ $(NAME): $(OBJS) ft_printf.h Makefile
 	ar -rcs $@ $(OBJS)
 	ranlib $@ 
 
-bonus: $(NAME) $(BONUS_OBJS)
-	ar rcs $(NAME) $(BONUS_OBJS)
-
 clean:
 	$(MAKE) -C libft clean
 	rm -f $(OBJS)
 
-bclean:
-	rm -f $(BONUS_OBJS)
-
-fclean: clean bclean
+fclean: clean
 	$(MAKE) -C libft fclean
 	rm -f libftprintf.a
 

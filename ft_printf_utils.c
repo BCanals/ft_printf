@@ -6,7 +6,7 @@
 /*   By: bizcru <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 23:12:36 by bizcru            #+#    #+#             */
-/*   Updated: 2024/10/13 03:32:54 by bizcru           ###   ########.fr       */
+/*   Updated: 2024/10/13 04:52:23 by bizcru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	ft_printf_hex(va_list *args, char type)
 	char			*base;
 
 	i = va_arg(*args, unsigned int);
-	if (type == 'x')
+	if (type == 'x' )
 		base = ft_strdup("0123456789abcdef");
 	else if (type == 'X')
 		base = ft_strdup("0123456789ABCDEF");
@@ -58,4 +58,19 @@ int	ft_printf_hex(va_list *args, char type)
 	 free(base);
 	 base = NULL;
 	 return (rtrn);
+}
+
+int	ft_printf_ptr(va_list *args)
+{
+	unsigned long	ptr;
+	int				rtrn;
+	char			*base;
+
+	ft_putstr_fd("0x", 2);
+	rtrn = 2;
+	ptr = (unsigned long) va_arg(*args, void *);
+	base = ft_strdup("0123456789abcdef");
+	rtrn += ft_putnbr_base_u(ptr, base);
+	free(base);
+	return (rtrn);
 }
