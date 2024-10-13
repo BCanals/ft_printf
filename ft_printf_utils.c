@@ -6,7 +6,7 @@
 /*   By: bizcru <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 23:12:36 by bizcru            #+#    #+#             */
-/*   Updated: 2024/10/14 00:33:00 by bizcru           ###   ########.fr       */
+/*   Updated: 2024/10/14 00:34:58 by bizcru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	ft_printf_unsigned(va_list *args)
 	dec = ft_itoa_u(i);
 	rtrn = ft_putstr_fd(dec, 1);
 	free(dec);
-	return (rtrn));
+	return (rtrn);
 }
 
 int	ft_printf_hex(va_list *args, char type)
