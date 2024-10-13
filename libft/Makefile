@@ -6,7 +6,7 @@
 #    By: bizcru <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/28 15:47:58 by bizcru            #+#    #+#              #
-#    Updated: 2024/10/10 18:24:38 by bizcru           ###   ########.fr        #
+#    Updated: 2024/10/13 03:28:44 by bizcru           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,6 @@ SRCS = ft_islower.c \
 		ft_strchr.c \
 		ft_strrchr.c \
 		ft_strtrim.c \
-		ft_atoi.c \
 		ft_strdup.c \
 		ft_memcpy.c \
 		ft_memrcpy.c \
@@ -48,27 +47,34 @@ SRCS = ft_islower.c \
 		ft_memcmp.c \
 		ft_memset.c \
 		ft_memchr.c \
+		ft_putnbr_base.c \
+		ft_putnbr_base_u.c \
+		ft_print_memory.c \
 		ft_strchr.c \
 		ft_strrchr.c \
 		ft_bzero.c \
 		ft_calloc.c \
 		ft_itoa.c \
+		ft_itoa_u.c \
 		ft_putchar_fd.c \
 		ft_putstr_fd.c \
 		ft_putendl_fd.c \
 		ft_putnbr_fd.c \
-		ft_split.c \
-		ft_lstnew.c \
-		ft_lstadd_front.c \
-		ft_lstadd_back.c \
-		ft_lstsize.c \
-		ft_lstlast.c \
-		ft_lstdelone.c \
-		ft_lstclear.c \
-		ft_lstiter.c \
-		ft_lstmap.c
+		ft_split.c
+
+BONUS_SRCS = ft_lstnew_bonus.c \
+			 ft_lstadd_front_bonus.c \
+			 ft_lstadd_back_bonus.c \
+			 ft_lstsize_bonus.c \
+			 ft_lstlast_bonus.c \
+			 ft_lstdelone_bonus.c \
+			 ft_lstclear_bonus.c \
+			 ft_lstiter_bonus.c \
+			 ft_lstmap_bonus.c
 
 OBJS = $(SRCS:.c=.o)
+
+BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 
 %.o: %.c
 	gcc $(CFLAGS) -I. -c $< -o $@
@@ -79,10 +85,16 @@ $(NAME): $(OBJS) libft.h Makefile
 	ar rc $@ $(OBJS)
 	ranlib $@ 
 
+bonus: $(NAME) $(BONUS_OBJS)
+	ar rcs $(NAME) $(BONUS_OBJS)
+
 clean: 
 	rm -f $(OBJS)
 
-fclean:
+bclean:
+	rm -f $(BONUS_OBJS)
+
+fclean: clean bclean
 	rm -f libft.a
 
 re: fclean all
