@@ -6,19 +6,22 @@
 /*   By: bizcru <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 20:26:08 by bizcru            #+#    #+#             */
-/*   Updated: 2024/10/13 04:33:12 by bizcru           ###   ########.fr       */
+/*   Updated: 2024/10/13 17:15:39 by bizcru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
-
 
 int	ft_printf_string(va_list *args)
 {
 	char	*string;
-	
+
 	string = va_arg(*args, char *);
+	if (!string)
+	{
+		ft_putstr_fd("(null)", 1);
+		return (6);
+	}
 	ft_putstr_fd(string, 2);
 	return (ft_strlen(string));
 }
@@ -40,7 +43,6 @@ int	ft_print_arg(char type, va_list *args)
 	return (0);
 }
 
-
 int	ft_printf(const char *format, ...)
 {
 	va_list	args;
@@ -50,7 +52,7 @@ int	ft_printf(const char *format, ...)
 	rtrn = 0;
 	va_start(args, format);
 	i = 0;
-	while(format[i])
+	while (format[i])
 	{
 		if (format[i] == '%')
 		{
@@ -59,12 +61,11 @@ int	ft_printf(const char *format, ...)
 		}
 		else
 		{
-			ft_putchar_fd(format[i], 2);
+			ft_putchar_fd(format[i], 1);
 			rtrn++;
 		}
 		i++;
 	}
 	va_end(args);
-	printf("ft_printf ends!\n");
-	return rtrn;
+	return (rtrn);
 }
