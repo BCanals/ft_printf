@@ -6,7 +6,7 @@
 /*   By: bizcru <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 20:26:08 by bizcru            #+#    #+#             */
-/*   Updated: 2024/10/13 17:15:39 by bizcru           ###   ########.fr       */
+/*   Updated: 2024/10/14 00:23:33 by bizcru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ int	ft_print_arg(char type, va_list *args)
 		return (ft_printf_hex(args, type));
 	else if (type == 'p')
 		return (ft_printf_ptr(args));
+	else if (type == '%')
+		return (write(1, "%", 1));
 	return (0);
 }
 
