@@ -6,19 +6,24 @@
 /*   By: bizcru <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 03:27:13 by bizcru            #+#    #+#             */
-/*   Updated: 2024/07/06 03:54:51 by bizcru           ###   ########.fr       */
+/*   Updated: 2024/10/14 00:32:14 by bizcru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr_fd(char *s, int fd)
+int	ft_putstr_fd(char *s, int fd)
 {
+	int	i;
+
+	i = 0;
 	if (!s)
-		return ;
+		return (0);
 	while (*s)
 	{
 		ft_putchar_fd(*s, fd);
 		s++;
+		i++;
 	}
+	return (i);
 }

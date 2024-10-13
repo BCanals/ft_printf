@@ -6,7 +6,7 @@
 /*   By: bizcru <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 23:12:36 by bizcru            #+#    #+#             */
-/*   Updated: 2024/10/13 19:52:11 by bizcru           ###   ########.fr       */
+/*   Updated: 2024/10/14 00:33:00 by bizcru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,21 +29,22 @@ int	ft_printf_dec(va_list *args)
 
 	i = va_arg(*args, int);
 	dec = ft_itoa(i);
-	ft_putstr_fd(dec, 1);
+	rtrn = ft_putstr_fd(dec, 1);
 	free(dec);
-	return (ft_strlen(dec));
+	return (rtrn);
 }
 
 int	ft_printf_unsigned(va_list *args)
 {
 	int		i;
 	char	*dec;
+	int		rtrn;
 
 	i = va_arg(*args, unsigned int);
 	dec = ft_itoa_u(i);
-	ft_putstr_fd(dec, 1);
+	rtrn = ft_putstr_fd(dec, 1);
 	free(dec);
-	return (ft_strlen(dec));
+	return (rtrn));
 }
 
 int	ft_printf_hex(va_list *args, char type)
