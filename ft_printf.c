@@ -6,7 +6,7 @@
 /*   By: bizcru <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 20:26:08 by bizcru            #+#    #+#             */
-/*   Updated: 2024/10/14 00:23:33 by bizcru           ###   ########.fr       */
+/*   Updated: 2024/10/14 00:36:59 by bizcru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_printf_string(va_list *args)
 		ft_putstr_fd("(null)", 1);
 		return (6);
 	}
-	ft_putstr_fd(string, 2);
+	ft_putstr_fd(string, 1);
 	return (ft_strlen(string));
 }
 
