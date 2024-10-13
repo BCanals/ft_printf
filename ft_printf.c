@@ -6,41 +6,63 @@
 /*   By: bizcru <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 20:26:08 by bizcru            #+#    #+#             */
-/*   Updated: 2024/10/11 20:26:58 by bcanals-         ###   ########.fr       */
+/*   Updated: 2024/10/13 03:08:30 by bizcru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
 
-int	ft_print_arg(char type, va_start *args)
+
+int	ft_printf_string(va_list *args)
 {
-	/*
-		if
-			print this way
-		if
-			print that way
-		if
-			print the other way
-		if
-			print same
-	*/
+	char	*string;
+	
+	string = va_arg(*args, char *);
+	ft_putstr_fd(string, 2);
+	return (ft_strlen(string));
+}
+
+int	ft_print_arg(char type, va_list *args)
+{
+	if (type == 's')
+		return (ft_printf_string(args));
+	else if (type == 'c')
+		return (ft_printf_char(args));
+	else if (type == 'i' || type == 'd')
+		return (ft_printf_dec(args));
+	else if (type == 'u')
+		return (ft_printf_unsigned(args));
+	else if (type == 'x' || type == 'X')
+		return (ft_printf_hex(args, type));
+	return (0);
 }
 
 
 int	ft_printf(const char *format, ...)
 {
-	va_list args;
+	va_list	args;
 	int		i;
 	int		rtrn;
 
+	rtrn = 0;
 	va_start(args, format);
+	i = 0;
 	while(format[i])
 	{
 		if (format[i] == '%')
-			//ft_manage arg - checks the type & update va_arg and prints
+		{
+			i++;
+			rtrn += ft_print_arg(format[i], &args);
+		}
+		else
+		{
+			ft_putchar_fd(format[i], 2);
+			rtrn++;
+		}
 		i++;
 	}
-	printf("Hi there, it's ft_check()\n");
 	va_end(args);
+	printf("ft_printf ends!\n");
+	return rtrn;
 }

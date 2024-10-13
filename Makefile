@@ -6,7 +6,7 @@
 #    By: bizcru <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/28 15:47:58 by bizcru            #+#    #+#              #
-#    Updated: 2024/10/10 20:37:49 by bizcru           ###   ########.fr        #
+#    Updated: 2024/10/12 23:59:53 by bizcru           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ LIBFT_NAME = libft.a
 
 CFLAGS = -Wall -Wextra -Werror
 
-SRCS =  ft_printf.c\
+SRCS =  ft_printf.c ft_printf_utils.c
 
 BONUS_SRCS = ft_lstnew_bonus.c \
 
